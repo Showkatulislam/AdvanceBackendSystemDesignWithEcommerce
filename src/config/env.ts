@@ -1,6 +1,6 @@
 import "dotenv/config";
 import { z } from "zod";
-import logger from "../utils/logger.js";
+import logger from "../shared/utils/logger.js";
 
 const envSchema = z.object({
   NODE_ENV: z.enum(["development", "test", "production"]).default("development"),
@@ -16,6 +16,7 @@ const envSchema = z.object({
   JWT_REFRESH_EXPIRES_IN: z.string().min(1),
 
   CORS_ORIGIN: z.string().min(1),
+  SEED_PASSWORD: z.string().min(1),
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
@@ -47,4 +48,5 @@ export const env = {
   cors: {
     origin: parsedEnv.data.CORS_ORIGIN,
   },
+  password: parsedEnv.data.SEED_PASSWORD,
 };

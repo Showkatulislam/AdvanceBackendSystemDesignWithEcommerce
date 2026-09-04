@@ -1,6 +1,11 @@
 node_modules/
 dist/
+.claude
+.windsurf
+dist
+.agents
 
 .env
 .env.*
 !.env.example
+/generated/prisma

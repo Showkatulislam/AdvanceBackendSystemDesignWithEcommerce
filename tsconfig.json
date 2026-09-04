@@ -3,7 +3,7 @@
     "target": "ES2023",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "rootDir": "./src",
+    "rootDirs": ["./src", "./generated"],
     "outDir": "./dist",
     "types": ["node"],
     "strict": true,
@@ -21,6 +21,6 @@
     "forceConsistentCasingInFileNames": true,
     "skipLibCheck": true
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*", "generated/**/*"],
   "exclude": ["node_modules", "dist", "tests"]
 }

@@ -4,3 +4,7 @@ coverage
 .git
 .env
 .env.*
+generated
+.agents
+.claude
+.windsurf

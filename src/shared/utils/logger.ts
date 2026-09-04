@@ -1,4 +1,4 @@
-import { env } from "../config/env.js";
+import { env } from "../../config/env.js";
 
 const logger = {
   info: (message: string, meta?: unknown) => {

@@ -50,6 +50,7 @@ model User {
   orders       Order[]
   reviews      Review[]
   refreshToken RefreshToken[]
+  passwordResetTokens PasswordResetToken[]
 
   cart     Cart?
   wishlist Wishlist?
@@ -58,9 +59,26 @@ model User {
   @@map("users")
 }
 
+model PasswordResetToken{
+  id String @id @default(uuid())
+
+  userId String
+  token String
+  expiresAt DateTime
+  usedAt DateTime?
+
+  createdAt DateTime @default(now())
+
+  user User @relation(fields: [userId],references: [id],onDelete: Cascade)
+
+  @@index([userId,expiresAt])
+}
+
 model RefreshToken {
   id    String @id @default(uuid())
-  token String
+  token String @unique
+
+  familyId String
 
   userId    String
   expiresAt DateTime
@@ -70,7 +88,7 @@ model RefreshToken {
 
   createdAt DateTime @default(now())
 
-  @@index([userId, expiresAt])
+  @@index([userId, expiresAt, familyId])
 }
 
 model Category {

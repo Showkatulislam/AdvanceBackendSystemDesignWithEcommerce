@@ -17,6 +17,7 @@ const envSchema = z.object({
 
   CORS_ORIGIN: z.string().min(1),
   SEED_PASSWORD: z.string().min(1),
+  REDIS_URL: z.string().min(1)
 });
 
 const parsedEnv = envSchema.safeParse(process.env);
@@ -49,4 +50,7 @@ export const env = {
     origin: parsedEnv.data.CORS_ORIGIN,
   },
   password: parsedEnv.data.SEED_PASSWORD,
+  redis:{
+    url:parsedEnv.data.REDIS_URL
+  }
 };
